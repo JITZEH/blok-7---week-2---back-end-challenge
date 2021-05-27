@@ -9,7 +9,7 @@ require 'db_connection.php';
 
 <body>
     <h3>maak een nieuwe lijst:</h3>
-    <form action="/new_list.php">
+    <form method="post" action="process.php">
         <label for="name">name:</label>
         <input type="text" id="name" name="name">
         <br>
@@ -18,7 +18,7 @@ require 'db_connection.php';
         <input type="text" id="description" name="description">
         <br>
         <br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="add list">
 
     </form>
 
