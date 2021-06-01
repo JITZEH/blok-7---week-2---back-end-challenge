@@ -7,6 +7,13 @@ function loadLists() {
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
 }
+function loadTasks() { 
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM tasks");
+    $stmt->execute();
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll();
+}
 
 ?>
 

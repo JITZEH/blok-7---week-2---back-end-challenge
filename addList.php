@@ -5,10 +5,11 @@ require_once 'functions.php';
 <html>
 
 <head>
-    <title>To Do list - Jitze van der Hoek</title>
+    <title>add list - Jitze van der Hoek</title>
 </head>
 
 <body>
+<a href='index.php' style="font-size: 75px; text-decoration: none;">🔙</a>
     <h3>maak een nieuwe lijst:</h3>
     <form method="post" action="process.php">
         <label for="name">name:</label>
@@ -27,15 +28,3 @@ require_once 'functions.php';
 
 </html>
 <ul>
-<?php
-    $lists = loadLists();
-    foreach($lists as $key => $list){
-?>
-    <li>
-        <span style="font-weight:bold;">name:<?= $list["name"] ?></span> &nbsp; <span>desc:<?= $list["description"] ?></span>
-    </li>
-
-
-<?php
-    }
-?>

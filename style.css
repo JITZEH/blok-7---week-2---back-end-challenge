@@ -1,0 +1,21 @@
+.list-group {
+    margin-left: 10em;
+    margin-right: 75em;
+}
+
+.dropdown-item {
+    color: black;
+}
+
+.linkFontWhite {
+    text-decoration: none;
+    color: white;
+}
+
+#addTaskForm {
+    margin-top: 1.5em;
+    margin-left: 10em;
+}
+.formlabels {
+    font-size:30px;
+}
