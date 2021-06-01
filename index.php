@@ -1,6 +1,7 @@
 <?php
 require 'db_connection.php';
 ?>
+
 <html>
 
 <head>
@@ -8,19 +9,10 @@ require 'db_connection.php';
 </head>
 
 <body>
-    <h3>maak een nieuwe lijst:</h3>
-    <form method="post" action="process.php">
-        <label for="name">name:</label>
-        <input type="text" id="name" name="name">
-        <br>
-        <br>
-        <label for="description">description:</label>
-        <input type="text" id="description" name="description">
-        <br>
-        <br>
-        <input type="submit" value="add list">
+    <h3>To DO</h3>
+<h3><a href="addList.php">add a List</a></h3>
 
-    </form>
+
 
 </body>
 
