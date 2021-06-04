@@ -1,6 +1,6 @@
 .list-group {
     margin-left: 10em;
-    margin-right: 75em;
+    margin-right: 60em;
 }
 
 .dropdown-item {
@@ -12,10 +12,11 @@
     color: white;
 }
 
-#addTaskForm {
+#addTaskForm,#addListForm {
     margin-top: 1.5em;
     margin-left: 10em;
 }
+
 .formlabels {
     font-size:30px;
 }

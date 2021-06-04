@@ -6,7 +6,7 @@ require_once 'functions.php';
 
 <head>
     <title>add task - Jitze van der Hoek</title>
-    <link href='style.css' rel="stylesheet">
+    <link href='stylesheet.css' rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 </head>
@@ -17,19 +17,23 @@ require_once 'functions.php';
     
     <form method="post" action="process.php" id="addTaskForm">
         <label class="formlabels" for="name">name:</label>
+        &nbsp;
         <input type="text" id="name" name="name">
         <br>
         <br>
-        <label class="formlabels"for="duration">description:</label>
-        <input type="text" id="duration" name="duration">
+        <label class="formlabels" for="status">status:</label>
+        &nbsp;
+        <input type="text" id="status" name="status">
         <br>
         <br>
-        <label class="formlabels" for="duration">duration:</label>
+        <label class="formlabels"for="duration">duration:</label>
+        &nbsp;
         <input type="time" id="duration" name="duration">
         <br>
         <br>
-        <label class="formlabels" for="selectlist">add task at:</label>
-        <select name="selectlist" id="selectlist" class="form-select-lg mb-3">
+        <label class="formlabels" for="list_id">add task at:</label>
+        &nbsp;
+        <select name="list_id" id="list_id" class="form-select-lg mb-3">
             <?php
 $lists = loadLists();
 foreach ($lists as $key => $list)
@@ -42,7 +46,7 @@ foreach ($lists as $key => $list)
         </select>
         <br>
         <br>
-        <input type="submit" value="add list">
+        <input type="submit" value="add task">
 
     </form>
 

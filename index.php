@@ -6,8 +6,8 @@ require_once 'functions.php';
 <html>
 
 <head>
-    <title>add list - Jitze van der Hoek</title>
-    <link href='style.css' rel="stylesheet">
+    <title>lists - Jitze van der Hoek</title>
+    <link href='stylesheet.css' rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
@@ -44,7 +44,7 @@ require_once 'functions.php';
     }
 ?>
     <div class="btn-group list-group-item" role="group" aria-label="Basic mixed styles example">
-        <button type="button" class="btn btn-danger">delete list</button>
+        <button type="button" class="btn btn-danger">delete list</button> 
         <button type="button" class="btn btn-warning">Middle</button>
         <button type="button" class="btn btn-success" ><a href='addTask.php?id=<?= $list["id"] ?>' class="linkFontWhite">add task</a></button>
     </div>

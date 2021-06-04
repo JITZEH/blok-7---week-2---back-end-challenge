@@ -1,0 +1,6 @@
+voor delete List button:
+<?php DELETE FROM `lists` WHERE `lists`.`id` = !!!thislist!!!; ?> 
+
+----
+
+
