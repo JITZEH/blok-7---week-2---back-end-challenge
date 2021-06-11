@@ -11,27 +11,44 @@
 
 
 
-if ($description != undefined) {
+ function insertList($name, $description, $conn) {
 	try {
-	$sql = "INSERT INTO lists (name, description)
-	VALUES ('$name','$description')";
+		$sql =  "INSERT INTO lists (name, description)
+		VALUES (:name,:description)" ;
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':description', $description);
 	// use exec() because no results are returned
-	$conn->exec($sql);
+	
+	$stmt->execute();
   } catch(PDOException $e) {
-	echo $sql . "<br>" . $e->getMessage();
+	return $sql . "<br>" . $e->getMessage();
   }
 }
 
-if ($status != undefined) {
+function insertTask($name, $duration, $status, $list_id, $conn) {
 	try {
-		$sql = "INSERT INTO tasks (name, status, duration, list_id)
-		VALUES ('$name','$status','$duration','$list_id')";
-		// use exec() because no results are returned
-		$conn->exec($sql);
-	} catch(PDOException $e) {
-		echo $sql . "<br>" . $e->getMessage();
-	}	
+		$sql = "INSERT INTO tasks (name, duration, status, list_id)
+		VALUES (:name, :duration, :status, :list_id)";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':duration', $duration);
+	$stmt->bindParam(':status', $status);
+	$stmt->bindParam(':list_id', $list_id);
+	// use exec() because no results are returned
+	$stmt->execute();
+  } catch(PDOException $e) {
+	return $sql . "<br>" . $e->getMessage();
+  }
 }
-else {
-	echo "je bent wat vergeten in te vullen";
+
+
+if($_POST['function'] == "list") {
+	echo insertList($name, $description, $conn);
+	header("Location: http://localhost/blok%207%20-%20week%202%20-%20back-end%20challenge/index.php");
+}
+
+if($_POST['function'] == "task") {
+	insertTask($name, $duration, $status, $list_id, $conn);
+	header("Location: http://localhost/blok%207%20-%20week%202%20-%20back-end%20challenge/index.php");
 }

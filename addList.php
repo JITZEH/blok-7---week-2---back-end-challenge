@@ -16,6 +16,7 @@ require_once 'functions.php';
     <h1><a href='index.php' style="margin:1em; text-decoration: none;">🔙</a> &nbsp; &nbsp; create a new list:</h1>
     
     <form method="post" action="process.php" id="addListForm">
+        <input type="hidden" value="list" name="function">
         <label class="formlabels" for="name">name:</label>
         &nbsp;
         <input type="text" id="name" name="name">

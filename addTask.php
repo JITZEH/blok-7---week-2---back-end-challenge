@@ -15,7 +15,8 @@ require_once 'functions.php';
     <br>
     <h1><a href='index.php' style="margin:1em; text-decoration: none;">🔙</a> &nbsp; &nbsp; create a new task:</h1>
     
-    <form method="post" action="process.php" id="addTaskForm">
+    <form method="post" action="process.php" id="addTaskForm" >
+        <input type="hidden" value="task" name="function">
         <label class="formlabels" for="name">name:</label>
         &nbsp;
         <input type="text" id="name" name="name">
