@@ -7,12 +7,14 @@ function loadLists() {
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
 }
-function loadTasks() { 
+function loadTasks($test) { 
     $conn = connect();
-    $stmt = $conn->prepare("SELECT * FROM tasks");
+    $stmt = $conn->prepare("SELECT * FROM tasks WHERE list_id=:test");
+    $stmt->bindParam(":test",$test);
     $stmt->execute();
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
+      echo $test;
 }
 
 ?>
