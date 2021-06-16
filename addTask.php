@@ -26,7 +26,7 @@ require_once 'functions.php';
         <label class="formlabels" for="status">status:</label>
         &nbsp;
         <select type="text" id="status" name="status">
-            <option value='to_do' selected>to do</option>
+            <option value='to do' selected>to do</option>
             <option value='busy'>busy</option>
             <option value='done'>done</option>
         </select>

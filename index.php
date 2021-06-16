@@ -43,15 +43,19 @@ require_once 'functions.php';
         
 ?>
             <label class="list-group-item" style="font-weight:bold;">
-                <input class="form-check-input me-1" type="checkbox" value="">
-                <?= $task["name"] ?>
+                <span>📄</span>&nbsp; <?= $task["name"] ?> 
+                <br>
+                <span>🕔</span> &nbsp;<?= $task["duration"] ?>
+                <br>
+                <span>✅</span> &nbsp; <?= $task["status"] ?>
+
             </label>
             <?php
     }
 ?>
-            <div class="btn-group list-group-item" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-danger">delete list</button>
-                <button type="button" class="btn btn-warning">update</button>
+            <div class="btn-group list-group-item" role="group" >
+                <button type="button" class="btn btn-danger"><a href='deleteList.php?id=<?= $list["id"] ?>' class="linkFontWhite">delete list</button>
+                <button type="button" class="btn btn-warning"><a href='updateList.php?id=<?= $list["id"] ?>' class="linkFontWhite">update</button>
                 <button type="button" class="btn btn-success"><a href='addTask.php?id=<?= $list["id"] ?>' class="linkFontWhite">add task</a></button>
             </div>
         </div>
