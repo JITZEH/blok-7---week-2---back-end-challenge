@@ -8,6 +8,11 @@
  $duration=$_POST['duration'];
  $status=$_POST['status'];
  $list_id=$_POST['list_id'];
+ $updateListName=$_POST['updateListName'];
+ $updateListDescription=$_POST['updateListDescription'];
+ $updateTaskName=$_POST['updateTaskName'];
+ $updateTaskStatus=$_POST['updateTaskStatus'];
+ $updateTaskDuration=$_POST['updateTaskDuration'];
 
 
 
@@ -62,6 +67,24 @@ if($_POST['function'] == "deletelist") {
 		header("Location: http://localhost/blok%207%20-%20week%202%20-%20back-end%20challenge/index.php");
 	}
 }
+if($_POST['function'] == "deletetask") {
+	if ($_POST['wanttodelete'] == 'yes') {	
+		deleteTask($conn);
+		header("Location: http://localhost/blok%207%20-%20week%202%20-%20back-end%20challenge/index.php");
+	}
+	else {
+		header("Location: http://localhost/blok%207%20-%20week%202%20-%20back-end%20challenge/index.php");
+	}
+}
+
+if($_POST['function'] == "updatelist") {
+	updateList($conn, $updateListName, $updateListDescription);
+	header("Location: http://localhost/blok%207%20-%20week%202%20-%20back-end%20challenge/index.php");
+}
+if($_POST['function'] == "updatetask") {
+	updateTask($conn, $updateTaskName, $updateTaskStatus, $updateTaskDuration);
+	header("Location: http://localhost/blok%207%20-%20week%202%20-%20back-end%20challenge/index.php");
+}
 
 
 
@@ -79,14 +102,13 @@ $listid = $_POST['listid'];
 
 }
 
-
-function deleteList($conn) {
+function deleteTask($conn) {
 	
-	$listid = $_POST['listid'];
+	$taskid = $_POST['taskid'];
 		try {
-			$sql = "UPDATE `lists` SET column1 = value1, column2 = value2,";
+			$sql = "DELETE FROM `tasks` WHERE id=:taskid";
 		$stmt = $conn->prepare($sql);
-		$stmt->bindParam(':listid', $listid);
+		$stmt->bindParam(':taskid', $taskid);
 		$stmt->execute();
 	  } catch(PDOException $e) {
 		return $sql . "<br>" . $e->getMessage();
@@ -94,6 +116,35 @@ function deleteList($conn) {
 	
 	}
 
-UPDATE table_name
-SET column1 = value1, column2 = value2, ...
-WHERE condition;
+function updateList($conn, $updateListName, $updateListDescription) {
+	
+	$listid = $_POST['listid'];
+		try {
+			$sql = "UPDATE `lists` SET name = :name, description = :description WHERE id=:listid";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(':name', $updateListName);
+			$stmt->bindParam(':description', $updateListDescription);
+			$stmt->bindParam(':listid', $listid);
+			$stmt->execute();
+	  } catch(PDOException $e) {
+		return $sql . "<br>" . $e->getMessage();
+		
+	  }
+}
+
+function updateTask($conn, $updateTaskName, $updateTaskStatus, $updateTaskDuration) {
+	
+	$taskid = $_POST['taskid'];
+		try {
+			$sql = "UPDATE `tasks` SET name = :name, status = :status, duration = :duration WHERE id=:taskid";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(':name', $updateTaskName);
+			$stmt->bindParam(':status', $updateTaskStatus);
+			$stmt->bindParam(':duration', $updateTaskDuration);
+			$stmt->bindParam(':taskid', $taskid);
+			$stmt->execute();
+		} catch(PDOException $e) {
+		return $sql . "<br>" . $e->getMessage();
+		
+	  }
+}
