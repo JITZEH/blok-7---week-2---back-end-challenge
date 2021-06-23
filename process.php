@@ -1,4 +1,7 @@
-<?php include 'db_connection.php';?>
+<?php
+ 	include 'db_connection.php';
+	include 'functions.php';
+?>
 
 <?php
  $conn = connect();
@@ -23,9 +26,8 @@
 	$stmt = $conn->prepare($sql);
 	$stmt->bindParam(':name', $name);
 	$stmt->bindParam(':description', $description);
-	// use exec() because no results are returned
-	
 	$stmt->execute();
+	loadLists();	
   } catch(PDOException $e) {
 	return $sql . "<br>" . $e->getMessage();
   }

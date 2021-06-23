@@ -1,6 +1,7 @@
 <?php
 require 'db_connection.php';
 require_once 'functions.php';
+
 ?>
 
 <html>
@@ -18,7 +19,26 @@ require_once 'functions.php';
 <body>
     <h3>To DO</h3>
     <h3><a href="addList.php">add a List</a></h3>
+ 
+    &nbsp;
+  
 
+    <form method="get" action="index.php?sort=test">
+        <select name="taskSort">
+            <option disabled selected><?= $_GET['taskSort']?></option>
+            <option value='ASC'>ASC</option>
+            <option value='DESC'>DESC</option>
+        </select>
+        <select name="taskFilter">
+        <option disabled selected><?= $_GET['taskFilter']?></option>
+            <option value='all' >all</option>
+            <option value='to do'>to do</option>
+            <option value='busy'>busy</option>
+            <option value='done'>done</option>
+        </select>
+        <button type="submit">send filter</button> 
+    </form>
+      
     <!-- lists -->
 <div class="containerflex">
 
@@ -35,10 +55,16 @@ require_once 'functions.php';
                     <span><?= $list["description"] ?></span>
                 </button>
             </div>
-
-            <?php
+<?php
     $id = $list["id"] ;
-    $tasks = loadTasksByListId($id);
+    $filter = 'all';
+    if (isset($_GET['taskFilter']) ) {
+        $filter = $_GET['taskFilter'];     
+    }
+
+    $sort = $_GET['taskSort'];
+
+    $tasks = loadTasksByListId($id, $sort,$filter);
     foreach($tasks as $key => $task){
         
 ?>
