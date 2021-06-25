@@ -4,7 +4,7 @@ function loadLists() {
     $conn = connect();
     $stmt = $conn->prepare("SELECT * FROM lists");
     $stmt->execute();
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
 }
 function loadTasksByListId($id, $sort, $filter) { 
@@ -16,8 +16,7 @@ function loadTasksByListId($id, $sort, $filter) {
     }
     else {
       $sql .= " AND status=:filter ORDER BY duration $sort";
-    }
-    
+    }   
   }
   else {
     $sql = $sql;
@@ -28,7 +27,7 @@ function loadTasksByListId($id, $sort, $filter) {
     }
     $stmt->bindParam(":id",$id);
     $stmt->execute();
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
 }
 
@@ -36,14 +35,10 @@ function loadTasksById() {
     $conn = connect();
     $stmt = $conn->prepare("SELECT * FROM tasks");
     $stmt->execute();
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
       
 }
-
-
-
-
 
 
 ?>

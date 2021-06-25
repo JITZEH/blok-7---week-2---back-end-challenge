@@ -23,7 +23,7 @@ require_once 'functions.php';
     &nbsp;
   
 
-    <form method="get" action="index.php?sort=test">
+    <form method="get" action="index.php">
         <select name="taskSort">
             <option disabled selected><?= $_GET['taskSort']?></option>
             <option value='ASC'>ASC</option>
